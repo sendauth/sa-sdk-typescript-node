@@ -1,5 +1,6 @@
 import localVarRequest from 'request';
 
+export * from './approval';
 export * from './audit';
 export * from './authGroup';
 export * from './authGroupMember';
@@ -53,6 +54,7 @@ export interface RequestDetailedFile {
 export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 
+import { Approval } from './approval';
 import { Audit } from './audit';
 import { AuthGroup } from './authGroup';
 import { AuthGroupMember } from './authGroupMember';
@@ -106,6 +108,7 @@ let primitives = [
                  ];
 
 let enumsMap: {[index: string]: any} = {
+        "Approval.StateEnum": Approval.StateEnum,
         "AuthGroup.ThresholdEnum": AuthGroup.ThresholdEnum,
         "CheckTransactionStatus200Response.StateEnum": CheckTransactionStatus200Response.StateEnum,
         "Query.SortDirEnum": Query.SortDirEnum,
@@ -116,6 +119,7 @@ let enumsMap: {[index: string]: any} = {
 }
 
 let typeMap: {[index: string]: any} = {
+    "Approval": Approval,
     "Audit": Audit,
     "AuthGroup": AuthGroup,
     "AuthGroupMember": AuthGroupMember,

@@ -2,6 +2,7 @@
 api.ts
 api/apis.ts
 api/approvalGroupsApi.ts
+api/approvalsApi.ts
 api/auditsApi.ts
 api/companiesApi.ts
 api/permissionGroupsApi.ts
@@ -13,6 +14,7 @@ api/transactionsApi.ts
 api/usersApi.ts
 api/webhooksApi.ts
 git_push.sh
+model/approval.ts
 model/audit.ts
 model/authGroup.ts
 model/authGroupMember.ts

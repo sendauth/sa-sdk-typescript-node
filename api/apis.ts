@@ -1,5 +1,7 @@
 export * from './approvalGroupsApi';
 import { ApprovalGroupsApi } from './approvalGroupsApi';
+export * from './approvalsApi';
+import { ApprovalsApi } from './approvalsApi';
 export * from './auditsApi';
 import { AuditsApi } from './auditsApi';
 export * from './companiesApi';
@@ -31,4 +33,4 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [ApprovalGroupsApi, AuditsApi, CompaniesApi, PermissionGroupsApi, PermissionsApi, RoutingRulesApi, SettingsApi, TagsApi, TransactionsApi, UsersApi, WebhooksApi];
+export const APIS = [ApprovalGroupsApi, ApprovalsApi, AuditsApi, CompaniesApi, PermissionGroupsApi, PermissionsApi, RoutingRulesApi, SettingsApi, TagsApi, TransactionsApi, UsersApi, WebhooksApi];

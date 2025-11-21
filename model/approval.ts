@@ -11,52 +11,47 @@
  */
 
 import { RequestFile } from './models';
+import { Transaction } from './transaction';
 
-export class Transaction {
+export class Approval {
     /**
-    * Transaction identifier
+    * Approval ID
     */
     'id'?: string;
     /**
-    * Subject user ID
+    * Approval state
     */
-    'subject'?: string;
+    'state'?: Approval.StateEnum;
     /**
-    * Subject user name
-    */
-    'subjectName'?: string;
-    /**
-    * Transaction state
-    */
-    'state'?: Transaction.StateEnum;
-    /**
-    * Transaction completion timestamp
+    * Approval completion timestamp
     */
     'completedAt'?: Date;
     /**
-    * Transaction requestor
+    * Approval requestor
     */
     'requestor'?: string;
     /**
-    * Transaction context
+    * Approval context
     */
     'context'?: string;
     /**
-    * Transaction creation timestamp
+    * Approval creation timestamp
     */
     'createdAt'?: Date;
     /**
-    * Transaction expiration timestamp
-    */
-    'expiresAt'?: Date;
-    /**
-    * Transaction message
+    * Approval message
     */
     'message'?: string;
+    'tags'?: { [key: string]: string; };
     /**
-    * User-provided message
+    * If requesting authorization on a user\'s behalf, provide the email to let the approvers know.
     */
-    'userMessage'?: string;
+    'onBehalfOf'?: string;
+    /**
+    * Arbitrary JSON data that gets passed to webhooks
+    */
+    'payload'?: { [key: string]: any; };
+    'transactions'?: Array<Transaction>;
 
     static discriminator: string | undefined = undefined;
 
@@ -67,19 +62,9 @@ export class Transaction {
             "type": "string"
         },
         {
-            "name": "subject",
-            "baseName": "subject",
-            "type": "string"
-        },
-        {
-            "name": "subjectName",
-            "baseName": "subjectName",
-            "type": "string"
-        },
-        {
             "name": "state",
             "baseName": "state",
-            "type": "Transaction.StateEnum"
+            "type": "Approval.StateEnum"
         },
         {
             "name": "completedAt",
@@ -102,27 +87,37 @@ export class Transaction {
             "type": "Date"
         },
         {
-            "name": "expiresAt",
-            "baseName": "expiresAt",
-            "type": "Date"
-        },
-        {
             "name": "message",
             "baseName": "message",
             "type": "string"
         },
         {
-            "name": "userMessage",
-            "baseName": "userMessage",
+            "name": "tags",
+            "baseName": "tags",
+            "type": "{ [key: string]: string; }"
+        },
+        {
+            "name": "onBehalfOf",
+            "baseName": "onBehalfOf",
             "type": "string"
+        },
+        {
+            "name": "payload",
+            "baseName": "payload",
+            "type": "{ [key: string]: any; }"
+        },
+        {
+            "name": "transactions",
+            "baseName": "transactions",
+            "type": "Array<Transaction>"
         }    ];
 
     static getAttributeTypeMap() {
-        return Transaction.attributeTypeMap;
+        return Approval.attributeTypeMap;
     }
 }
 
-export namespace Transaction {
+export namespace Approval {
     export enum StateEnum {
         Pending = <any> 'pending',
         Verified = <any> 'verified',
