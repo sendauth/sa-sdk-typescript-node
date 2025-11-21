@@ -15,6 +15,10 @@ import { RequestFile } from './models';
 export class AuthorizeRequest {
     'message': string;
     'tag': { [key: string]: string; };
+    /**
+    * If requesting authorization on a user\'s behalf, provide the email to let the approvers know.
+    */
+    'onBehalfOf'?: string;
     'context'?: string;
     /**
     * Arbitrary JSON data that gets passed to webhooks
@@ -33,6 +37,11 @@ export class AuthorizeRequest {
             "name": "tag",
             "baseName": "tag",
             "type": "{ [key: string]: string; }"
+        },
+        {
+            "name": "onBehalfOf",
+            "baseName": "onBehalfOf",
+            "type": "string"
         },
         {
             "name": "context",
